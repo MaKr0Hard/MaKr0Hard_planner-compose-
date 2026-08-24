@@ -1,0 +1,7 @@
+/mobile/build/
+/wear/build/
+/build/
+/.gradle/
+/.idea/
+/.kotlin/
+/local.properties
