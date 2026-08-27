@@ -204,7 +204,7 @@ fun home() {
                         }
                     }
                     Box(modifier = Modifier.weight(1.35f)) {
-                        counterUntil(10, "Haloween");
+                        counterUntil(get_remaining_days(get_holiday_vect().elementAt(0)).toInt(), get_holiday_vect().elementAt(0).name);
                     }
                 };
 
