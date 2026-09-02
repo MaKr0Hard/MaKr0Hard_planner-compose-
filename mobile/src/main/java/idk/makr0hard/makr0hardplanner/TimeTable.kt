@@ -6,17 +6,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.datastore.core.FileStorage
 import idk.makr0hard.makr0hardplanner.ui.theme.MaKr0HardPlannerTheme
 import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -26,13 +32,16 @@ import org.json.JSONObject
 import java.io.File
 import java.io.RandomAccessFile
 import java.util.Vector
+import kotlin.collections.emptyList
 
+@Serializable
 data class SchoolPeriod (
     var name: String,
     var teacher: String,
     var room: Int,
 );
 
+@Serializable
 data class TimeTableData (
     var monday: List<SchoolPeriod>?,
     var tuesday: List<SchoolPeriod>?,
@@ -41,7 +50,9 @@ data class TimeTableData (
     var friday: List<SchoolPeriod>?,
 );
 
-var timeTableData: TimeTableData = TimeTableData(null, null, null, null, null);
+//var timeTableData: TimeTableData = TimeTableData(null, null, null, null, null);
+
+var content: String = String();
 
 var json: JSONObject = JSONObject();
 
@@ -69,7 +80,7 @@ class TimeTable: ComponentActivity() {
         RandomAccessFile(file, "rw").use { raf ->
             val bytes = ByteArray(raf.length().toInt());
             raf.readFully(bytes);
-            val content = String(bytes, Charsets.UTF_8);
+            content = String(bytes, Charsets.UTF_8);
 
             var json: JSONObject;
             if (content.isNotBlank()) {
@@ -80,7 +91,10 @@ class TimeTable: ComponentActivity() {
 
             } //Make it self-explanatory
 
-
+            val updatedBytes = json.toString(2).toByteArray(Charsets.UTF_8)
+            raf.seek(0)
+            raf.write(updatedBytes)
+            raf.setLength(updatedBytes.size.toLong())
         }
     }
 
@@ -99,6 +113,13 @@ class TimeTable: ComponentActivity() {
 
 @Composable
 fun Layout() {
+    val list = remember(content) {
+        try {
+            Json.decodeFromString<TimeTableData>(content);
+        } catch (e: Exception) {
+            e.printStackTrace();
+        }
+    }
     Scaffold(modifier = Modifier.fillMaxSize()) {
         paddingValues ->
         Column(
@@ -110,13 +131,27 @@ fun Layout() {
 
             }
         }
-        if (timeTableData.monday != null) {
-            LazyColumn() {
-
-                items(timeTableData.monday, key = { it.id }) { item ->
-                    Text()
-                }
+        Row() {
+            Column () {
+                Text (text= "Monday");
+                //TODO : day()
             }
+        }
+
+    }
+}
+
+@Composable
+fun day(day: List<SchoolPeriod>) {
+    LazyColumn() {
+
+        items(day) { item ->
+            ElevatedCard() {
+                Text(text = item.name);
+                Text(text = item.teacher, fontStyle = FontStyle.Italic);
+                Text(text = item.room.toString());
+            }
+
         }
     }
 }
