@@ -99,6 +99,7 @@ import java.util.Locale
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        var cctx =
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {

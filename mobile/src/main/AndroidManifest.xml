@@ -29,6 +29,12 @@
             android:theme="@style/Theme.MaKr0HardPlanner"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity
+            android:name=".TimeTable"
+            android:exported="true"
+            android:theme="@style/Theme.MaKr0HardPlanner"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
     </application>
     <uses-permission android:name="android.permission.VIBRATE" />
 
