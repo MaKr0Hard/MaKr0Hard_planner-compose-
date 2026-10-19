@@ -49,6 +49,8 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.material3.ListItem;
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -151,6 +153,7 @@ fun MaKr0HardPlannerApp() {
             ) /* end Column */ {
             when (currentDestination) { // Why, just why jetbrains ? why can't we just have a syntax keyword like assembly to change this woke language purely designed to attract the apple sheep into something like C/CPP, where you really want to
                                         // spend your time debugging, all that because stoopid android doesn't have native apis, long live halium ! KDE ! GNOME ! pmOS !
+                                        // I switched to C# btw
                     AppDestinations.HOME -> {
                         home();
                     }
@@ -229,6 +232,7 @@ fun why() {
 }
 
 @Composable
+@Stable
 fun counterUntil(numberof_days_before_dayoff: Int, dayoffname: String) {
 
 
