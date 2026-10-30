@@ -1,4 +1,4 @@
-package idk.makr0hard.makr0hardplanner
+/*package idk.makr0hard.makr0hardplanner
 
 import android.content.Context
 import android.os.Bundle
@@ -19,13 +19,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
-import androidx.datastore.core.FileStorage
+//import androidx.datastore.core.FileStorage
 import idk.makr0hard.makr0hardplanner.ui.theme.MaKr0HardPlannerTheme
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+/*import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonObject*/
 import org.json.JSONArray
 
 import org.json.JSONObject
@@ -154,4 +154,4 @@ fun day(day: List<SchoolPeriod>) {
 
         }
     }
-}
+}*/

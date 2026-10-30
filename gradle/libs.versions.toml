@@ -28,6 +28,7 @@ watchfaceComplicationsDataSourceKtx = "1.2.1"
 lifecycleRuntimeKtx = "2.6.1"
 composeMaterial3Version = "1.6.2"
 datastoreCore = "1.2.1"
+jetbrainsKotlinJvm = "2.2.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -69,3 +70,5 @@ androidx-datastore-core = { group = "androidx.datastore", name = "datastore-core
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }

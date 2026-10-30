@@ -29,3 +29,4 @@ dependencyResolutionManagement {
 rootProject.name = "MaKr0HardPlanner"
 include(":mobile")
 include(":wear")
+include(":libCalendar")

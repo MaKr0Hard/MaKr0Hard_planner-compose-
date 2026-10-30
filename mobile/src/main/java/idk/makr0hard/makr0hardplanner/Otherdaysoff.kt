@@ -31,16 +31,18 @@ import java.util.Date
 import java.util.Vector
 
 data class Holiday(var name: String, var day: Int, var month: Int, var year: Int);
-var holiday_vect: Vector<Holiday> = Vector();
+var holiday_vect: Vector<Holiday> = Vector(); //TODO: Change holiday to standard event
 
 fun get_holiday_vect(): Vector<Holiday> {
     var holiday_vectt: Vector<Holiday> = Vector();
-    holiday_vectt.addElement(Holiday("Halloween", 19, 10, 2026, ));
+    //holiday_vectt.addElement(Holiday("Halloween", 19, 10, 2026, ));
     holiday_vectt.addElement(Holiday("Christmas", 21, 12, 2026, ));
     holiday_vectt.addElement(Holiday("February", 22, 2, 2027, ));
     holiday_vectt.addElement(Holiday("Spring", 26, 4, 2027, ));
     return holiday_vectt;
 }
+
+val winter_exams = Holiday("Winter exams", 10, 12, 2026);
 
 fun get_remaining_days(item: Holiday) :Long {
     var d: LocalDate = LocalDate.of(item.year, item.month, item.day);

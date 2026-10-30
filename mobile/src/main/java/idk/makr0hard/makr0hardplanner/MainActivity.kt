@@ -151,17 +151,16 @@ fun MaKr0HardPlannerApp() {
                 .fillMaxSize()
 
             ) /* end Column */ {
-            when (currentDestination) { // Why, just why jetbrains ? why can't we just have a syntax keyword like assembly to change this woke language purely designed to attract the apple sheep into something like C/CPP, where you really want to
-                                        // spend your time debugging, all that because stoopid android doesn't have native apis, long live halium ! KDE ! GNOME ! pmOS !
-                                        // I switched to C# btw
+            when (currentDestination) { // Jetbrains, if you want to prove your ai can do stuff, rewrite your all tools in rust goddamnit !!! Come on, 4GB of gradle in this economy !!!
+                                        // I switched to C# btw, the kotlin ecosystem sucks
                     AppDestinations.HOME -> {
                         home();
                     }
                     AppDestinations.PLANNER -> {
                         planner();
                     }
-                    else -> {
-                        why();
+                    AppDestinations.PROFILE -> {
+                        profile();
                     }
                 }
             }
@@ -210,10 +209,13 @@ fun home() {
                     Box(modifier = Modifier.weight(1.35f)) {
                         counterUntil(get_remaining_days(get_holiday_vect().elementAt(0)).toInt(), get_holiday_vect().elementAt(0).name);
                     }
+
                 };
 
             }
-
+        Box(modifier = Modifier.fillMaxWidth()) {
+             holiday_card(winter_exams.name, winter_exams.day, winter_exams.month, winter_exams.year, winter_exams)
+        }
             //Spacer(modifier = Modifier.weight(3f));
             //Text(text = "sorry bruh, still in construction", fontSize = 40.sp, lineHeight = 50.sp);
     }
@@ -224,6 +226,11 @@ fun home() {
 fun planner() {
 
 
+}
+
+@Composable
+fun profile() {
+    Text(text = "You suck.")
 }
 
 @Composable
@@ -251,7 +258,7 @@ fun counterUntil(numberof_days_before_dayoff: Int, dayoffname: String) {
 
                         context.startActivity(intent);
 
-                    }) {
+                    }) /* end Button */ {
                         Row() {
                             Text(text = "Other days off ");
                             Icon(painter = painterResource(id = R.drawable.outline_arrow_forward_24), null);
